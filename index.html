@@ -10,225 +10,30 @@
 <meta name="author" content="YOUR NAME">
 <title>Home</title>
 
-<!-- this one line connects the page to the stylesheet -->
-<link rel="stylesheet" href="styles.css">
-</head>
-<body>
+<!-- BANNER: big opening section -->
+<section class="blk-banner">
+    <h2>Our Drumline Seniors</h2>
+    <p>The elders of our drumline</p>
+    <a class="blk-button" href=".html">Meet Andres</a>
+</section>
 
-<!-- ===== MENU ============================================================
-     The menu is four links. Each link wraps an image instead of words.
-     Build it once on this page, check that every link works,
-     then copy the whole <nav> block and paste it over the menu on the
-     other three pages, so every page has the exact same menu.
-     ===================================================================== -->
-<nav>
-    <a href="index.html"><img src="img/home.png" alt="Home"></a>
-    <a href="ultimate frisbee.html"><img src="img/ultimate frisbee.png" alt="Ultimate Frisbee"></a>
-    <a href="fishing.html"><img src="img/fishing.png" alt="Fishing"></a>
-    <a href="drumming.html"><img src="img/drumming.png" alt="Drumming"></a>
-</nav>
-
-<h1>Home</h1>
-<p>My name is Conner White and this website previews three of my favorite hobbies.</p>
-<p>These hobbies are things that I currently love to do, and try to do as often as I can. They are, playing Ultimate Frisbee, Fishing, and Drumming.</p>
-
-<!-- ===== SHOWCASE ======================================================
-     This box is empty on purpose. In Part 7 you paste an interactive
-     graphic BETWEEN the opening <div> and the closing </div> below.
-     ===================================================================== -->
-<div class="showcase"><!-- HTML: the graph's heading, filter buttons, bar list and the detail box that shows what you tap -->
-<div class="showcase-graph">
-  <h2 class="showcase-title">Popular hobbies in America</h2>
-  <div class="showcase-controls">
-    <button type="button" class="showcase-btn showcase-active" data-mode="popular">Most popular</button>
-    <button type="button" class="showcase-btn" data-mode="alpha">A to Z</button>
-    <button type="button" class="showcase-btn" data-mode="mine">My 3 hobbies</button>
-  </div>
-  <div class="showcase-bars"></div>
-  <p class="showcase-detail">Tap a bar to learn more.</p>
-</div>
-
-<!-- CSS: colors, font and layout for the graph. Every rule starts with .showcase so it can't touch the rest of the page -->
-<style>
-.showcase .showcase-graph {
-  max-width: 600px;
-  margin: 20px auto;
-  padding: 16px;
-  box-sizing: border-box;
-  background: #000000;
-  color: #FFFFFF;
-  border: 3px solid #C1F0DE;
-  border-radius: 12px;
-  font-family: "Comic Sans MS", "Comic Sans", cursive;
+/* BANNER */
+.blk-banner {
+    background-color: #900d03;   /* change to your brand color */
+    color: white;
+    text-align: center;
+    padding: 60px 20px;
+    border-radius: 12px;
+    margin: 20px auto;
+    max-width: 900px;
 }
-.showcase .showcase-title {
-  margin: 0 0 10px 0;
-  font-size: 20px;
-  text-align: center;
-  color: #FFFFFF;
-}
-.showcase .showcase-controls {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  justify-content: center;
-  margin-bottom: 12px;
-}
-.showcase .showcase-btn {
-  font-family: inherit;
-  font-size: 14px;
-  padding: 6px 12px;
-  background: #000000;
-  color: #FFFFFF;
-  border: 2px solid #C1F0DE;
-  border-radius: 20px;
-  cursor: pointer;
-}
-.showcase .showcase-btn:hover { background: #2a3d36; }
-.showcase .showcase-btn.showcase-active {
-  background: #C1F0DE;
-  color: #000000;
-}
-.showcase .showcase-bars { min-height: 260px; }
-.showcase .showcase-row {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  width: 100%;
-  margin: 0 0 6px 0;
-  padding: 2px 0;
-  background: none;
-  border: none;
-  color: #FFFFFF;
-  font-family: inherit;
-  font-size: 13px;
-  text-align: left;
-  cursor: pointer;
-}
-.showcase .showcase-label { flex: 0 0 96px; }
-.showcase .showcase-track {
-  display: block;
-  flex: 1;
-  height: 20px;
-  background: #1a1a1a;
-  border-radius: 10px;
-  overflow: hidden;
-}
-.showcase .showcase-fill {
-  display: block;
-  height: 100%;
-  min-width: 6px;
-  background: #C1F0DE;
-  border-radius: 10px;
-  transition: width 0.5s ease, background 0.2s;
-}
-.showcase .showcase-row.showcase-mine .showcase-fill { background: #FFFFFF; }
-.showcase .showcase-row.showcase-dim { opacity: 0.3; }
-.showcase .showcase-row.showcase-selected .showcase-label { color: #C1F0DE; font-weight: bold; }
-.showcase .showcase-row:focus-visible { outline: 2px solid #FFFFFF; outline-offset: 2px; }
-.showcase .showcase-num { flex: 0 0 28px; text-align: right; }
-.showcase .showcase-detail {
-  min-height: 40px;
-  margin: 10px 0 0 0;
-  max-width: none;
-  font-size: 14px;
-  line-height: 1.4;
-  text-align: center;
-  color: #FFFFFF;
-}
-@media (prefers-reduced-motion: reduce) {
-  .showcase .showcase-fill { transition: none; }
-}
-</style>
+.blk-banner h2 { font-size: 40px; margin: 0 0 10px 0; }
+.blk-banner p { font-size: 20px; margin: 0 auto 24px auto; }
+.blk-button {
+    display: inline-block;
 
-<!-- JavaScript: holds the hobby data, draws the bars, handles the buttons and shows details when a bar is clicked -->
-<script>
-(function () {
-  var root = document.querySelector(".showcase");
-  var barsBox = root.querySelector(".showcase-bars");
-  var detail = root.querySelector(".showcase-detail");
-  var buttons = root.querySelectorAll(".showcase-btn");
 
-  // Popularity score from 0 to 100. These are rough, illustrative numbers.
-  // Replace them with figures from a source you cite before you present this as fact.
-  var hobbies = [
-    { name: "Reading", score: 90, note: "Easy, cheap and done almost anywhere." },
-    { name: "Walking", score: 85, note: "The most common way Americans stay active." },
-    { name: "Cooking", score: 78, note: "Part hobby, part daily life." },
-    { name: "Gardening", score: 66, note: "Big with homeowners of every age." },
-    { name: "Fishing", score: 55, note: "One of my favorites. Tens of millions of Americans fish each year.", mine: true },
-    { name: "Hiking", score: 52, note: "Grew a lot as people looked for time outdoors." },
-    { name: "Video games", score: 50, note: "Played by a big share of all age groups." },
-    { name: "Camping", score: 48, note: "Often pairs well with fishing." },
-    { name: "Drumming", score: 8, note: "One of my favorites. Fewer people do it, but it is a great workout for the mind and body.", mine: true },
-    { name: "Ultimate Frisbee", score: 5, note: "One of my favorites. A small but fast-growing sport.", mine: true }
-  ];
-
-  var mode = "popular";
-  var selected = null;
-
-  function render() {
-    var list = hobbies.slice();
-    if (mode === "alpha") {
-      list.sort(function (a, b) { return a.name.localeCompare(b.name); });
-    } else {
-      list.sort(function (a, b) { return b.score - a.score; });
-    }
-
-    barsBox.innerHTML = "";
-    list.forEach(function (h) {
-      var row = document.createElement("button");
-      row.type = "button";
-      row.className = "showcase-row";
-      if (h.mine) row.className += " showcase-mine";
-      if (mode === "mine" && !h.mine) row.className += " showcase-dim";
-      if (selected === h.name) row.className += " showcase-selected";
-
-      var label = document.createElement("span");
-      label.className = "showcase-label";
-      label.textContent = h.name;
-
-      var track = document.createElement("span");
-      track.className = "showcase-track";
-      var fill = document.createElement("span");
-      fill.className = "showcase-fill";
-      fill.style.width = "0%";
-      track.appendChild(fill);
-
-      var num = document.createElement("span");
-      num.className = "showcase-num";
-      num.textContent = h.score;
-
-      row.appendChild(label);
-      row.appendChild(track);
-      row.appendChild(num);
-
-      row.addEventListener("click", function () {
-        selected = h.name;
-        detail.textContent = h.name + " (score " + h.score + "/100): " + h.note;
-        render();
-      });
-
-      barsBox.appendChild(row);
-      // set the width after adding the row so the bar animates in
-      setTimeout(function () { fill.style.width = h.score + "%"; }, 20);
-    });
-  }
-
-  buttons.forEach(function (btn) {
-    btn.addEventListener("click", function () {
-      mode = btn.getAttribute("data-mode");
-      buttons.forEach(function (b) { b.classList.remove("showcase-active"); });
-      btn.classList.add("showcase-active");
-      render();
-    });
-  });
-
-  render();
-})();
-</script></div>
-
-<!-- Footer: fill in your name -->
+  
 <footer>Built by Conner White &middot; BMIS 235</footer>
 
 </body>
